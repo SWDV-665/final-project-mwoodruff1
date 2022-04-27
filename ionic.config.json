@@ -1,5 +1,7 @@
 {
   "name": "selene-tasks",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
