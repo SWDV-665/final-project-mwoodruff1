@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { DatahandlerService } from '../datahandler.service';
 import { AlertControllerService } from '../alert-controller.service';
-import { ToastController, AlertController } from '@ionic/angular';
+import { Clipboard } from '@awesome-cordova-plugins/clipboard/ngx';
 
 @Component({
   selector: 'app-tab3',
@@ -10,13 +10,16 @@ import { ToastController, AlertController } from '@ionic/angular';
 })
 export class Tab3Page {
 
-  constructor(public toastCtrl: ToastController, public alertCtrl: AlertController, public dataService: DatahandlerService, public inputDialogService: AlertControllerService) {}
+  constructor( public dataService: DatahandlerService, public inputDialogService: AlertControllerService, public clipboard: Clipboard) {}
   loadExpiredTasks() {
     return this.dataService.getExpiredTasks();
   }  
 
+  async copyExpiredTask(task){
+    this.clipboard.copy(task)
+  }
+
   async removeExpiredTask(task, index) {
-    console.log("Removing ExpiredTask: ", task, index);
     this.dataService.removeExpiredTask(index);  
   }
 
