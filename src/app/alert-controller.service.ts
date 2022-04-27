@@ -27,6 +27,8 @@ export class AlertControllerService {
         {
           name: 'dueDate',
           type: "date",
+          placeholder: 'MM/DD/YYY',
+          value: task ? task.dueDate: null
         },
 
       ],
